@@ -1,16 +1,34 @@
 import { __O, __X } from "../constants";
 
+/**
+ * make empty array
+ * @param length
+ * @returns {any[]}
+ */
 export const emptyArray = (length) => {
   return Array(length).fill(null);
 };
-
-export const cubeE = ({ cube }) => {
+/**
+ * matrix is full
+ * @param cube
+ * @returns {*|boolean}
+ */
+export const cubeIsFull = ({ cube }) => {
   return cube.length ? cube.every((item) => item.every((item) => item)) : false;
 };
-
+/**
+ * make matrix with length
+ * @param cubeLength
+ * @returns {*[][]}
+ */
 export const makeCube = ({ cubeLength = 3 } = {}) => {
   return emptyArray(cubeLength).map(() => emptyArray(cubeLength));
 };
+/**
+ * count all results
+ * @param history
+ * @returns {string}
+ */
 export const countAllResult = ({ history }) => {
   const xoArray = Object.keys(history).map((item) => {
     const { cube, row } = history[item];
@@ -20,7 +38,11 @@ export const countAllResult = ({ history }) => {
   const oArray = xoArray.filter((item) => item === __O);
   return `Result: X:${xArray.length} - O:${oArray.length}`;
 };
-
+/**
+ * make time with date
+ * @param time
+ * @returns {string}
+ */
 export const makeTime = (time) => {
   const ye = new Intl.DateTimeFormat("en", { year: "numeric" }).format(time);
   const mo = new Intl.DateTimeFormat("en", { month: "short" }).format(time);
@@ -34,6 +56,12 @@ export const makeTime = (time) => {
   return `${ye}-${mo}-${da} ${hr}:${mn}:${sc}`;
 };
 
+/**
+ * find item inside matrix
+ * @param item
+ * @param cube
+ * @returns {boolean}
+ */
 export const findItem = ({ item, cube }) =>
   !!item.reduce((a, b) =>
     a
@@ -43,6 +71,12 @@ export const findItem = ({ item, cube }) =>
       : a
   );
 
+/**
+ * win row position calculation
+ * @param row
+ * @param winPosition
+ * @returns {[]}
+ */
 export const calculateRowPosition = ({ row, winPosition }) => {
   let rowPosition = [];
   Object.keys(winPosition).forEach((item) => {
@@ -54,6 +88,13 @@ export const calculateRowPosition = ({ row, winPosition }) => {
   });
   return rowPosition;
 };
+
+/**
+ * check is win
+ * @param cube
+ * @param winPosition
+ * @returns {{isWined: boolean, row: *, rowPosition: *}|{}}
+ */
 export const isWinner = (cube, winPosition) => {
   const { horizontal, vertical, leftFromRight, rightFromLeft } = winPosition;
   const rows = [...horizontal, ...vertical, ...leftFromRight, ...rightFromLeft];
@@ -73,6 +114,12 @@ export const isWinner = (cube, winPosition) => {
 
   return {};
 };
+
+/**
+ * count matrix diagonals
+ * @param matrix
+ * @returns {{leftFromRight: [], rightFromLeft: []}}
+ */
 export const matrixDiagonal = (matrix) => {
   let leftFromRight = [],
     rightFromLeft = [];
