@@ -1,0 +1,10 @@
+.history {
+  .winCube {
+    &::after {
+      background: rebeccapurple;
+    }
+  }
+  .cube{
+    cursor: not-allowed;
+  }
+}
