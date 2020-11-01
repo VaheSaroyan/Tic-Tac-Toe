@@ -1,6 +1,6 @@
 import React from "react";
-import { Cubes, Header, History } from "components";
-import { __O, __X, OFF, ON } from "../../constants";
+import { Cubes, GameHeader } from "components";
+import { __O, __X, initialState, ON } from "../../constants";
 import {
   cubeIsFull,
   emptyArray,
@@ -8,16 +8,16 @@ import {
   makeCube,
   matrixDiagonal,
 } from "helpers";
-
+import "./index.scss";
+import { GameContext } from "context/mainContexts";
 const Game = ({ setHistory, history }) => {
-  const [cubeLength, setCubeLength] = React.useState(3);
+  const { cubeLength, userPlayer, cpu } = React.useContext(GameContext);
+
   const [cube, setCube] = React.useState([]);
   const [winRow, setWinRow] = React.useState([]);
   const [rowPosition, setRowPosition] = React.useState("horizontal");
-  const [userPlayer, setUserPlayer] = React.useState(__X);
   const [player, setPlayer] = React.useState(__X);
   const [isWined, setIsWined] = React.useState(false);
-  const [cpu, setCpu] = React.useState(ON);
 
   React.useEffect(() => {
     setCube(makeCube({ cubeLength }));
@@ -55,6 +55,11 @@ const Game = ({ setHistory, history }) => {
       }, 1000);
     }
   }, [cube]);
+
+  React.useEffect(() => {
+    setPlayer(__X);
+    setCube(makeCube({ cubeLength }));
+  }, [cubeLength]);
 
   const setItem = React.useCallback(
     (x, y) => () => {
@@ -112,7 +117,7 @@ const Game = ({ setHistory, history }) => {
 
   return (
     <div className="game-container">
-      <Header
+      <GameHeader
         winner={winRow[0] && cube[winRow[0][0]][winRow[0][1]]}
         isSown={isWined}
       />
@@ -122,43 +127,6 @@ const Game = ({ setHistory, history }) => {
         winRow={winRow}
         rowPosition={rowPosition}
       />
-      <select
-        value={userPlayer}
-        onChange={(e) => {
-          setUserPlayer(e.target.value);
-          setPlayer(__X);
-          setCube(makeCube({ cubeLength }));
-        }}
-      >
-        <option value={__X}>User player X</option>
-        <option value={__O}>User player O</option>
-      </select>
-      <select
-        value={cpu}
-        onChange={(e) => {
-          setCpu(e.target.value);
-        }}
-      >
-        <option value={ON}>CPU ON</option>
-        <option value={OFF}>CPU OFF</option>
-      </select>
-      <select
-        value={cubeLength}
-        onChange={(e) => {
-          setCubeLength(Number(e.target.value));
-        }}
-      >
-        {emptyArray(10).map((item, index) => {
-          if (index >= 3) {
-            return (
-              <option value={index} key={index}>
-                {index}
-              </option>
-            );
-          }
-          return undefined;
-        })}
-      </select>
     </div>
   );
 };

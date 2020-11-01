@@ -1,11 +1,12 @@
 import React from "react";
 import "./index.scss";
 
-const Header = ({ winner, isSown }) => {
-  if (!isSown) {
-    return null;
-  }
-  return <header>Is win from {winner}!</header>;
+const Header = ({ text }) => {
+  return (
+    <header>
+      <h1>{text}</h1>
+    </header>
+  );
 };
 
 export default Header;

@@ -1,7 +1,11 @@
 body{
-    margin: 10px;
+    /*margin: 10px;*/
+    margin: 0;
 }
-
+#root{
+    display: flex;
+    flex-direction: column;
+}
 h1,h2{
     text-align: center;
 }
@@ -9,6 +13,8 @@ h1,h2{
 .main-container{
     display: flex;
     flex-wrap: wrap;
+    margin-top: 60px;
+
 }
 
 .container{
@@ -16,15 +22,11 @@ h1,h2{
    margin: 25px;
 }
 
-.game-container{
-    margin-top: auto;
-    margin-left: auto;
-    margin-right: auto;
-}
+
 
 select{
     width: 33.333%;
-    height: 30px;
+    height: 50px;
 }
 
 @media  (max-width: 1200px)  {
