@@ -1,5 +1,10 @@
 import * as React from "react";
-import { GameContext, HistoryContext, LoaderContext } from "./mainContexts";
+import {
+  GameContext,
+  HistoryContext,
+  LoaderContext,
+  ThemeContext,
+} from "./mainContexts";
 import createGameContext from "./createGameContext";
 import { __X, ON } from "../constants";
 import createHistoryContext from "./createHistoryContext";
@@ -10,6 +15,7 @@ const Context = ({ children }) => {
   const [cpu, setCpu] = React.useState(ON);
   const [history, setHistory] = React.useState([]);
   const [loaderVisible, setLoaderVisible] = React.useState(true);
+  const [theme, setTheme] = React.useState("default");
 
   React.useEffect(() => {
     const history = localStorage.getItem("history");
@@ -37,7 +43,9 @@ const Context = ({ children }) => {
     <GameContext.Provider value={gameContext}>
       <HistoryContext.Provider value={historyContext}>
         <LoaderContext.Provider value={{ loaderVisible }}>
-          {children}
+          <ThemeContext.Provider value={{ theme, setTheme }}>
+            {children}
+          </ThemeContext.Provider>
         </LoaderContext.Provider>
       </HistoryContext.Provider>
     </GameContext.Provider>

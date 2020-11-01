@@ -15,7 +15,12 @@ const History = ({ context = { history: {} } }) => {
       >
         <h1>Winner is {cube[row[0][0]][row[0][1]]}</h1>
         <h2>{makeTime(time)}</h2>
-        <Cubes cube={cube} winRow={row} rowPosition={rowPosition} />
+        <Cubes
+          cube={cube}
+          winRow={row}
+          rowPosition={rowPosition}
+          context={context}
+        />
       </div>
     );
   });

@@ -126,6 +126,7 @@ const Game = ({ context = { history: {}, setHistory: () => {} } }) => {
         isSown={isWined}
       />
       <Cubes
+        context={context}
         cube={cube}
         setItem={setItem}
         winRow={winRow}

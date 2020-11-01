@@ -1,13 +1,16 @@
 import React from "react";
 import { useSpring, animated } from "react-spring";
 import "./index.scss";
+import { Loader } from "../";
 
-const Cube = ({ winRow, position, rowPosition, onClick, item }) => {
+const Cube = ({ winRow, position, rowPosition, onClick, item, image }) => {
   const [winCube, setWinCube] = React.useState(false);
+
   const { xyz } = useSpring({
     from: { xyz: [0, 0, 0] },
     xyz: [10, 20, 10],
   });
+
   React.useEffect(() => {
     setWinCube(false);
     winRow.forEach((row) => {
@@ -28,7 +31,15 @@ const Cube = ({ winRow, position, rowPosition, onClick, item }) => {
       data-row-position={rowPosition}
       onClick={onClick}
     >
-      {item}
+      {image && item ? (
+        image[item] ? (
+          <img src={image[item]} alt={image[item]} />
+        ) : (
+          <Loader visible isSmall />
+        )
+      ) : (
+        item
+      )}
     </animated.span>
   );
 };
