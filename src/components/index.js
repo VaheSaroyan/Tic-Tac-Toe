@@ -7,6 +7,7 @@ import Game from "./Game";
 import Footer from "./Footer";
 import Header from "./Header";
 import MainContainer from "./MainContainer";
+import Background from "./Background";
 
 export {
   Cube,
@@ -18,4 +19,5 @@ export {
   Footer,
   Header,
   MainContainer,
+  Background,
 };

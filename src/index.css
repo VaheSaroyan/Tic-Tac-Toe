@@ -1,7 +1,9 @@
 body{
     /*margin: 10px;*/
     margin: 0;
+
 }
+
 #root{
     display: flex;
     flex-direction: column;

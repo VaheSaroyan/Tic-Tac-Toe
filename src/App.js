@@ -1,11 +1,19 @@
 import React from "react";
-import { History, Game, Footer, Header, MainContainer } from "components";
+import {
+  History,
+  Game,
+  Footer,
+  Header,
+  MainContainer,
+  Background,
+} from "components";
 import Context from "context";
 import "index.css";
 
 const App = () => {
   return (
     <Context>
+      <Background />
       <Header />
       <MainContainer>
         <History />
