@@ -5,10 +5,17 @@ import { __X, ON } from "../constants";
 import createHistoryContext from "./createHistoryContext";
 
 const Context = ({ children }) => {
-  const [cubeLength, setCubeLength] = React.useState(4);
+  const [cubeLength, setCubeLength] = React.useState(3);
   const [userPlayer, setUserPlayer] = React.useState(__X);
   const [cpu, setCpu] = React.useState(ON);
   const [history, setHistory] = React.useState([]);
+
+  React.useEffect(() => {
+    const history = localStorage.getItem("history");
+    if (history) {
+      setHistory(JSON.parse(history));
+    }
+  }, []);
 
   const gameContext = createGameContext({
     cubeLength,

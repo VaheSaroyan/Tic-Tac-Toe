@@ -40,10 +40,16 @@ export const countAllResult = ({ history }) => {
 };
 /**
  * make time with date
- * @param time
  * @returns {string}
+ * @param date
  */
-export const makeTime = (time) => {
+export const makeTime = (date) => {
+  let time;
+  if (date instanceof Date) {
+    time = date;
+  } else {
+    time = new Date(date);
+  }
   const ye = new Intl.DateTimeFormat("en", { year: "numeric" }).format(time);
   const mo = new Intl.DateTimeFormat("en", { month: "short" }).format(time);
   const da = new Intl.DateTimeFormat("en", { day: "2-digit" }).format(time);
