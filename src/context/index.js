@@ -1,5 +1,5 @@
 import * as React from "react";
-import { GameContext, HistoryContext } from "./mainContexts";
+import { GameContext, HistoryContext, LoaderContext } from "./mainContexts";
 import createGameContext from "./createGameContext";
 import { __X, ON } from "../constants";
 import createHistoryContext from "./createHistoryContext";
@@ -9,12 +9,14 @@ const Context = ({ children }) => {
   const [userPlayer, setUserPlayer] = React.useState(__X);
   const [cpu, setCpu] = React.useState(ON);
   const [history, setHistory] = React.useState([]);
+  const [loaderVisible, setLoaderVisible] = React.useState(true);
 
   React.useEffect(() => {
     const history = localStorage.getItem("history");
     if (history) {
       setHistory(JSON.parse(history));
     }
+    setTimeout(() => setLoaderVisible(false), 500);
   }, []);
 
   const gameContext = createGameContext({
@@ -34,7 +36,9 @@ const Context = ({ children }) => {
   return (
     <GameContext.Provider value={gameContext}>
       <HistoryContext.Provider value={historyContext}>
-        {children}
+        <LoaderContext.Provider value={{ loaderVisible }}>
+          {children}
+        </LoaderContext.Provider>
       </HistoryContext.Provider>
     </GameContext.Provider>
   );

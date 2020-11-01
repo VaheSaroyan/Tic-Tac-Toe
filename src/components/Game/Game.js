@@ -9,11 +9,10 @@ import {
   matrixDiagonal,
 } from "helpers";
 import "./index.scss";
-import { GameContext, HistoryContext } from "context/mainContexts";
 
-const Game = () => {
-  const { cubeLength, userPlayer, cpu } = React.useContext(GameContext);
-  const { history, setHistory } = React.useContext(HistoryContext);
+const Game = ({ context = { history: {}, setHistory: () => {} } }) => {
+  const { cubeLength, userPlayer, cpu, history, setHistory } = context;
+
   const [cube, setCube] = React.useState([]);
   const [winRow, setWinRow] = React.useState([]);
   const [rowPosition, setRowPosition] = React.useState("horizontal");
@@ -46,6 +45,10 @@ const Game = () => {
             time: new Date(),
           },
         });
+        window.scrollTo(
+          0,
+          document.querySelector(".main-container").scrollHeight
+        );
         setCube(makeCube({ cubeLength }));
         setWinRow([]);
         setIsWined(false);

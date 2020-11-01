@@ -17,6 +17,7 @@ h1,h2{
 .container{
    width: 20%;
    margin: 25px;
+   position: relative;
 }
 
 
@@ -24,6 +25,9 @@ h1,h2{
 select{
     width: 33.333%;
     height: 50px;
+    outline: none;
+    border: none;
+    background: rgba(123,123,123,0.8);
 }
 
 @media  (max-width: 1200px)  {

@@ -6,4 +6,12 @@ header {
   align-items: center;
   justify-content: center;
   background: rgba(123,123,123,0.3);
+  select{
+    margin-left: auto;
+    width: 10%;
+    background: transparent;
+  }
+  h1{
+    margin-left: auto;
+  }
 }

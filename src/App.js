@@ -6,21 +6,32 @@ import {
   Header,
   MainContainer,
   Background,
+  Loader,
 } from "components";
-import Context from "context";
+
 import "index.css";
+import {
+  GameContext,
+  HistoryContext,
+  LoaderContext,
+} from "./context/mainContexts";
 
 const App = () => {
+  const historyContext = React.useContext(HistoryContext);
+  const gameContext = React.useContext(GameContext);
+  const { loaderVisible } = React.useContext(LoaderContext);
+
   return (
-    <Context>
+    <>
       <Background />
-      <Header />
+      <Header context={historyContext} />
       <MainContainer>
-        <History />
-        <Game />
+        <History context={historyContext} />
+        <Game context={{ ...gameContext, ...historyContext }} />
       </MainContainer>
       <Footer />
-    </Context>
+      <Loader visible={loaderVisible} />
+    </>
   );
 };
 
