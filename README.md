@@ -1,5 +1,4 @@
-#Tic tac toe Game
+# Tic Tac Toe React
 
-##demo 
 
-https://tictactoere.herokuapp.com/
+## Demo [https://tictactoere.herokuapp.com/](https://tictactoere.herokuapp.com/) 
