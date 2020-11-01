@@ -1,5 +1,5 @@
 import React from "react";
-import { Cube, Row } from "../index";
+import { Cube, Row } from "../";
 import { THEMES_WITHOUT_DEFAULT } from "../../constants";
 
 const Cubes = ({ cube, setItem, winRow, rowPosition, context }) => {

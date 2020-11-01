@@ -8,7 +8,6 @@ import {
   Background,
   Loader,
 } from "components";
-
 import "index.css";
 import {
   GameContext,

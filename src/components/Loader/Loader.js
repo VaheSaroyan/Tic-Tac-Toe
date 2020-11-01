@@ -7,9 +7,9 @@ const Loader = ({ visible, isSmall }) => {
   }
   return (
     <div
-      className={`loader-container loader-container${isSmall ? "--small" : ""}`}
+      className={`loader-container ${isSmall ? "loader-container--small" : ""}`}
     >
-      <span className={`loader loader${isSmall ? "--small" : ""}`} />
+      <span className={`loader ${isSmall ? "loader--small" : ""}`} />
     </div>
   );
 };

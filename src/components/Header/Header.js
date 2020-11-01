@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.scss";
-import { countAllResult } from "../../helpers";
+import { countAllResult } from "helpers";
 import { THEMES } from "../../constants";
 
 console.log(THEMES);

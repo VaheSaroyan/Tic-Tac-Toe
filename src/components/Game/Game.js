@@ -18,10 +18,10 @@ const Game = ({ context = { history: {}, setHistory: () => {} } }) => {
   const [rowPosition, setRowPosition] = React.useState("horizontal");
   const [player, setPlayer] = React.useState(__X);
   const [isWined, setIsWined] = React.useState(false);
-
-  React.useEffect(() => {
+  const isEmpty = () => {
     setCube(makeCube({ cubeLength }));
-  }, [cubeLength]);
+  };
+  React.useEffect(isEmpty, [cubeLength]);
 
   React.useEffect(() => {
     if (player !== userPlayer && cpu === ON && !cubeIsFull({ cube })) {
@@ -54,9 +54,7 @@ const Game = ({ context = { history: {}, setHistory: () => {} } }) => {
         setIsWined(false);
       }, 2000);
     } else if (cubeIsFull({ cube })) {
-      setTimeout(() => {
-        setCube(makeCube({ cubeLength }));
-      }, 1000);
+      setTimeout(isEmpty, 1000);
     }
   }, [cube]);
 

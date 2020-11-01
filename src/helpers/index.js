@@ -32,7 +32,7 @@ export const makeCube = ({ cubeLength = 3 } = {}) => {
 export const countAllResult = ({ history }) => {
   const xoArray = Object.keys(history).map((item) => {
     const { cube, row } = history[item];
-    return cube[row[0][0]][row[0][1]];
+    return findCube({ cube, row });
   });
   const xArray = xoArray.filter((item) => item === __X);
   const oArray = xoArray.filter((item) => item === __O);
@@ -139,3 +139,10 @@ export const matrixDiagonal = (matrix) => {
     rightFromLeft,
   };
 };
+/**
+ * find Cube
+ * @param cube
+ * @param row
+ * @returns {*}
+ */
+export const findCube = ({ cube, row }) => cube[row[0][0]][row[0][1]];
