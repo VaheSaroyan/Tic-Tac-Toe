@@ -6,5 +6,16 @@ import Cubes from "./Cubes";
 import Game from "./Game";
 import Footer from "./Footer";
 import Header from "./Header";
+import MainContainer from "./MainContainer";
 
-export { Cube, Row, History, GameHeader, Cubes, Game, Footer, Header };
+export {
+  Cube,
+  Row,
+  History,
+  GameHeader,
+  Cubes,
+  Game,
+  Footer,
+  Header,
+  MainContainer,
+};

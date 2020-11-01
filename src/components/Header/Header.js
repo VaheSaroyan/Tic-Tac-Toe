@@ -1,10 +1,12 @@
 import React from "react";
 import "./index.scss";
-
-const Header = ({ text }) => {
+import { HistoryContext } from "context/mainContexts";
+import { countAllResult } from "../../helpers";
+const Header = () => {
+  const { history } = React.useContext(HistoryContext);
   return (
     <header>
-      <h1>{text}</h1>
+      <h1>{countAllResult({ history })}</h1>
     </header>
   );
 };

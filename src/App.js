@@ -1,19 +1,16 @@
 import React from "react";
-import "./index.css";
-import { History, Game, Footer, Header } from "components";
-import { countAllResult } from "helpers";
-import Context from "./context";
+import { History, Game, Footer, Header, MainContainer } from "components";
+import Context from "context";
+import "index.css";
 
 const App = () => {
-  const [history, setHistory] = React.useState([]);
-
   return (
     <Context>
-      <Header text={countAllResult({ history })} />
-      <div className="main-container">
-        <History history={history} />
-        <Game setHistory={setHistory} history={history} />
-      </div>
+      <Header />
+      <MainContainer>
+        <History />
+        <Game />
+      </MainContainer>
       <Footer />
     </Context>
   );

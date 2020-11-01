@@ -2,8 +2,10 @@ import React from "react";
 import { makeTime } from "helpers";
 import { Cubes } from "../";
 import "./index.scss";
+import { HistoryContext } from "../../context/mainContexts";
 
-const History = ({ history }) => {
+const History = () => {
+  const { history } = React.useContext(HistoryContext);
   return Object.keys(history).map((item) => {
     const { cube, row, rowPosition, time } = history[item];
 

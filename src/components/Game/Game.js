@@ -1,6 +1,6 @@
 import React from "react";
 import { Cubes, GameHeader } from "components";
-import { __O, __X, initialState, ON } from "../../constants";
+import { __O, __X, ON } from "../../constants";
 import {
   cubeIsFull,
   emptyArray,
@@ -9,10 +9,11 @@ import {
   matrixDiagonal,
 } from "helpers";
 import "./index.scss";
-import { GameContext } from "context/mainContexts";
-const Game = ({ setHistory, history }) => {
-  const { cubeLength, userPlayer, cpu } = React.useContext(GameContext);
+import { GameContext, HistoryContext } from "context/mainContexts";
 
+const Game = () => {
+  const { cubeLength, userPlayer, cpu } = React.useContext(GameContext);
+  const { history, setHistory } = React.useContext(HistoryContext);
   const [cube, setCube] = React.useState([]);
   const [winRow, setWinRow] = React.useState([]);
   const [rowPosition, setRowPosition] = React.useState("horizontal");
